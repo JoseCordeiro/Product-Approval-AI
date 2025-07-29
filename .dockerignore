@@ -1,0 +1,49 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pytest_cache
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.cursor/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Development
+.env
+.env.local
+*.log
+logs/
+
+# Testing
+tests/
+conftest.py
+
+# Documentation
+README.md
+*.md
+
+# Cache
+.ruff_cache/
+
+# Demo files
+demo/
