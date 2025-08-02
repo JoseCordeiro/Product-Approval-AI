@@ -15,10 +15,6 @@ APPROVAL CRITERIA:
 3. **Educational**: Provides genuine knowledge, skills, or entertainment value
 4. **Compliant**: Follows advertising standards and legal requirements
 
-RESPONSE FORMAT:
-You must respond with EXACTLY this JSON format:
-{"decision": "approve" or "reject", "explanation": "1-3 sentence explanation"}
-
 Be decisive but fair. When in doubt about borderline cases, lean toward approval if the product provides genuine value."""
 
 USER_PROMPT_TEMPLATE = """Please review this digital product for approval on our platform:
