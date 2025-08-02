@@ -26,10 +26,6 @@ class Settings(BaseSettings):
         default=False,
         description="Enable debug mode"
     )
-    max_content_length: int = Field(
-        default=10000,
-        description="Maximum sales page content length"
-    )
     use_mock_ai: bool = Field(
         default=False,
         description="Use mock AI service instead of OpenAI (for testing)"

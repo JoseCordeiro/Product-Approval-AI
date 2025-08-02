@@ -56,13 +56,6 @@ async def review_product(request: ReviewRequest, app_request: Request) -> Review
     """
     logger.info(f"Reviewing product: {request.product_name[:50]}...")
 
-    # Additional validation for content length
-    if len(request.sales_page) > settings.max_content_length:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Sales page content too long (max {settings.max_content_length} characters)"
-        )
-
     try:
         # Get review service from app state
         review_service: ReviewService = app_request.app.state.review_service
