@@ -70,9 +70,15 @@ OPENAI_API_KEY="your-key"
 uv run pytest tests/ -v
 ```
 
-## 🧠 Prompt Engineering Strategy
+## 🧠 AI Architecture & Prompt Engineering
 
-The AI review system uses a sophisticated multi-layered approach:
+The AI review system uses OpenAI's latest structured output capabilities with a sophisticated multi-layered approach:
+
+### 🆕 OpenAI Structured Output
+- **Direct Pydantic Integration**: Uses `responses.parse()` with `text_format=ReviewResponse`
+- **Automatic Validation**: Leverages Pydantic model validation for type safety
+- **Zero Parsing Logic**: Eliminates manual JSON parsing and error handling
+- **Enhanced Reliability**: Built-in validation ensures consistent response structure
 
 ### System Prompt Design
 The AI reviewer is configured as an "expert product reviewer" with specific guidelines:
@@ -90,11 +96,11 @@ The AI reviewer is configured as an "expert product reviewer" with specific guid
 3. **Educational** - Provides genuine knowledge or skills
 4. **Compliant** - Follows advertising standards
 
-### Response Format Control
-- Enforces structured JSON output: `{"decision": "approve/reject", "explanation": "..."}`
-- Low temperature (0.2) for consistent decisions
-- Limited response length (150 tokens) for concise explanations
-- Fallback parsing for non-JSON responses
+### Response Structure
+- **Pydantic Model Validation**: Automatic enforcement of decision format and explanation length
+- **Type Safety**: Direct parsing into `ReviewResponse` model with enum validation
+- **Consistent Output**: Reliable structure through OpenAI's structured output API
+- **Error Handling**: Graceful fallbacks with safety defaults
 
 ### Contextual Analysis
 - Product name and sales page content analyzed together
@@ -227,5 +233,6 @@ Sample test results with challenge data:
 - **Dependency Injection** - Configurable service dependencies
 - **Async Support** - Full async/await pattern throughout
 - **Modern Python** - Python 3.12+ features and best practices
+- **🆕 Structured Output** - OpenAI Responses API with Pydantic integration
 
 ---
