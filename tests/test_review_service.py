@@ -5,7 +5,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 import pytest
 
 from app.config import settings
-from app.models import ReviewDecision
+from app.models import ReviewDecision, ReviewResponse
 from app.services.review_service import ReviewService
 
 
@@ -43,13 +43,15 @@ class TestReviewService:
     @patch('app.services.review_service.AsyncOpenAI')
     async def test_openai_integration_success(self, mock_openai_class):
         """Test successful OpenAI API integration."""
-        # Mock OpenAI response
+        # Mock OpenAI response with structured output
         mock_response = MagicMock()
-        mock_response.choices = [MagicMock()]
-        mock_response.choices[0].message.content = '{"decision": "approve", "explanation": "Product is educational and well-structured."}'
+        mock_response.output_parsed = ReviewResponse(
+            decision=ReviewDecision.APPROVE,
+            explanation="Product is educational and well-structured."
+        )
 
         mock_client = AsyncMock()
-        mock_client.chat.completions.create.return_value = mock_response
+        mock_client.responses.parse.return_value = mock_response
         mock_openai_class.return_value = mock_client
 
         # Test with OpenAI enabled
@@ -65,4 +67,4 @@ class TestReviewService:
 
             assert result.decision == ReviewDecision.APPROVE
             assert "educational" in result.explanation.lower()
-            mock_client.chat.completions.create.assert_called_once()
+            mock_client.responses.parse.assert_called_once()
