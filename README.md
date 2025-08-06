@@ -4,6 +4,17 @@
 
 A minimal REST API that uses AI to pre-review digital products, helping to accelerate manual approval processes and reduce workload for sales platforms.
 
+## 📄 License
+
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**.
+
+You are free to use, modify, and share this project for **non-commercial purposes**, provided you give proper credit to the author.
+
+> ⚠️ **For commercial use, licensing inquiries, or business collaborations, please contact:**  
+> 📧 josecordeiro.dev@gmail.com
+
+License details: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+
 ## 🚀 Quick Start
 
 ### Prerequisites
